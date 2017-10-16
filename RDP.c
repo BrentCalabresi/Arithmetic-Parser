@@ -254,7 +254,7 @@
     } else {
         printf("\n");
         for (int i = 0; i < currentSpacing; i++) {
-            printf("\t");
+            printf("  ");
         }
         printf("(%c", tree->label);
         if (tree->LMC != NULL) {

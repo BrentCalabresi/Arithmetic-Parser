@@ -1,4 +1,5 @@
 #include "Calculator.h"
+//#include "RDP.h"
 
 int calculate(Tree toCalc)
 {
@@ -21,7 +22,7 @@ int concatenate_two(int one,int two)
 
 int E_Handler(Tree toCalc)
 {
-  if(A_Handler(toCalc->LMC->RS) == (int)NULL){ // If A is epsilon
+  if(A_Handler(toCalc->LMC->RS) == -1){ // If A is epsilon
   return T_Handler(toCalc->LMC);//Return calc of <T>
 
 } else if (toCalc->LMC->RS->LMC->label == '+'){//If the sub-A first terminal is a +
@@ -37,24 +38,25 @@ int A_Handler(Tree toCalc)
   switch(toCalc->LMC->label)
   {
     case 'e':
-      return (int)NULL;
+      return -1;
       break;
     case '+':
-      if (A_Handler(toCalc->LMC->RS->RS) != (int)NULL)//If the sub A is not epsilon
+      if (A_Handler(toCalc->LMC->RS->RS) != -1)//If the sub A is not epsilon
         return (concatenate_two(T_Handler(toCalc->LMC->RS),A_Handler(toCalc->LMC->RS->RS)));//Return T concatenated with A
       else return (T_Handler(toCalc->LMC->RS));//if A is epsilon, return just T
       break;
     case '-':
-      if (A_Handler(toCalc->LMC->RS->RS) != (int)NULL)//If the sub A is not epsilon
+      if (A_Handler(toCalc->LMC->RS->RS) != -1)//If the sub A is not epsilon
         return (concatenate_two(T_Handler(toCalc->LMC->RS),A_Handler(toCalc->LMC->RS->RS)));//Return T concatenated with A
       else return (T_Handler(toCalc->LMC->RS));//if A is epsilon, return just T
       break;
   }
+  return -1;
 }
 
 int T_Handler(Tree toCalc)
 {
-    if(B_Handler(toCalc->LMC->RS) == (int)NULL){ // If A is epsilon
+    if(B_Handler(toCalc->LMC->RS) == -1){ // If A is epsilon
     return F_Handler(toCalc->LMC);//Return calc of <F>
 
   } else if (toCalc->LMC->RS->LMC->label == '*'){//If the sub-B first terminal is a *
@@ -70,19 +72,20 @@ int B_Handler(Tree toCalc)
   switch(toCalc->LMC->label)
   {
     case 'e'://If epsilon, return (int)NULL
-      return (int)NULL;
+      return -1;
       break;
     case '*':
-      if (B_Handler(toCalc->LMC->RS->RS) != (int)NULL)//If the sub B is not epsilon
+      if (B_Handler(toCalc->LMC->RS->RS) != -1)//If the sub B is not epsilon
         return (concatenate_two(F_Handler(toCalc->LMC->RS),B_Handler(toCalc->LMC->RS->RS)));//Return F concatenated with B
       else return (F_Handler(toCalc->LMC->RS));//if B is epsilon, return just F
       break;
     case '/':
-      if (B_Handler(toCalc->LMC->RS->RS) != (int)NULL)//If the sub A is not epsilon
+      if (B_Handler(toCalc->LMC->RS->RS) != -1)//If the sub A is not epsilon
         return (concatenate_two(F_Handler(toCalc->LMC->RS),B_Handler(toCalc->LMC->RS->RS)));//Return F concatenated with B
       else return (F_Handler(toCalc->LMC->RS));//if B is epsilon, return just F
       break;
   }
+  return -1;
 }
 
 int F_Handler(Tree toCalc)
@@ -97,7 +100,7 @@ int F_Handler(Tree toCalc)
 
 int N_Handler(Tree toCalc)
 {
-  if (C_Handler(toCalc->LMC->RS) != (int)NULL)//If the C isn't epsilon
+  if (C_Handler(toCalc->LMC->RS) != -1)//If the C isn't epsilon
     return concatenate_two(D_Handler(toCalc->LMC),C_Handler(toCalc->LMC->RS));//Concatenate
   else return D_Handler(toCalc->LMC);
 }
@@ -105,7 +108,7 @@ int N_Handler(Tree toCalc)
 int C_Handler(Tree toCalc)
 {
   if (toCalc->LMC->label == 'e'){
-    return (int)NULL;
+    return -1;
   } else { //Must be <N>
     return N_Handler(toCalc->LMC);
   }
@@ -146,4 +149,5 @@ int D_Handler(Tree toCalc)
       return 9;
       break;
   }
+  return -1;
 }

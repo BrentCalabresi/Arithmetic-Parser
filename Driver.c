@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "Calculator.h"
+#include <string.h>
+#include "Calculator.c"
+#include "TableParser.c"
+#include "RDP.c"
 
 int main(){
 
@@ -21,6 +24,8 @@ int main(){
 	parseTree = ExpressionE();
   Tree_print(parseTree,1,0);
 	printf("\n");
+
+	printf("Parsed by table: %d\n\n",Table_run(strcat(expression,"$")));
 	printf("----------------------Answer----------------------\n");
-	printf("%d\n",calculate(parseTree));
+	//printf("%d\n",calculate(parseTree));
 }

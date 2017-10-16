@@ -1,6 +1,4 @@
 #include "RDP.h"
-#include <stdlib.h>
-#include <string.h>
 
 int calculate(Tree toCalc);
 

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "Calculator.h"
 
 typedef struct Node* Tree;
 
