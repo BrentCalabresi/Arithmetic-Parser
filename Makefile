@@ -1,5 +1,5 @@
-PROG = Driver
-SRCS = Driver.c
+PROG = expr
+SRCS = Driver.c RDP.c Calculator.c TableParser.c
 OBJS = ${SRCS:%.c=%.o}
 
 $(PROG): $(OBJS)

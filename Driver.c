@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-#include "Calculator.c"
-#include "TableParser.c"
-#include "RDP.c"
+#include "Calculator.h"
+#include "TableParser.h"
+#include "RDP.h"
 
 int main(){
 
@@ -27,5 +27,5 @@ int main(){
 
 	printf("Parsed by table: %d\n\n",Table_run(strcat(expression,"$")));
 	printf("----------------------Answer----------------------\n");
-	//printf("%d\n",calculate(parseTree));
+	printf("%d\n",calculate(parseTree));
 }

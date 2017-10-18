@@ -1,5 +1,6 @@
 #include "RDP.h"
-
+#include <stdlib.h>
+#include <stdio.h>
 
 /*************************************************************
 *These functions create subTrees with set amounts of children

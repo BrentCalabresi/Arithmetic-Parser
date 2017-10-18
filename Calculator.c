@@ -1,5 +1,8 @@
 #include "Calculator.h"
 //#include "RDP.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int calculate(Tree toCalc)
 {
@@ -10,8 +13,8 @@ int concatenate_two(int one,int two)
 {
   char str1[100];
   char str2[100];
-  sprintf(str1,"%d",one);
-  sprintf(str2,"%d",two);
+  printf(str1,"%d",one);
+  printf(str2,"%d",two);
   strcat(str1,str2);
   return atoi(str1);
 }

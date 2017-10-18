@@ -1,4 +1,6 @@
 #include "RDP.h"
+#ifndef _CALCULATOR_
+#define _CALCULATOR_
 
 int calculate(Tree toCalc);
 
@@ -17,3 +19,4 @@ int N_Handler(Tree toCalc);
 int C_Handler(Tree toCalc);
 
 int D_Handler(Tree toCalc);
+#endif

@@ -1,6 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "Calculator.h"
+#ifndef _RDPH_
+#define _RDPH_
 
 typedef struct Node* Tree;
 
@@ -50,3 +49,4 @@ struct Node{
 
 //Prints the tree horizontally in the console
  void Tree_print(Tree treeToPrint, int start, int numIndented);//int start is a boolean val of if on the root node
+#endif
